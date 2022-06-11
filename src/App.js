@@ -1,13 +1,18 @@
 import React from 'react'
-import Sidebar from "./Sidebar";
 import Test from "./Test";
+import {Routes,Route} from 'react-router-dom'
+import Units from "./Units";
+import NotFound404 from "./NotFound404";
 
 export default function App() {
 
   return (
     <>
-      {/*<Sidebar/>*/}
-<Test />
+      <Routes>
+        <Route path={"/"} element={<Units />} />
+        <Route path={"/test"} element={<Test />} />
+        <Route path={"*"} element={<NotFound404 />} />
+      </Routes>
       </>
   )
 

@@ -1,42 +1,41 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
+import {useNavigate} from "react-router";
+
 
 function Nav() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <nav className="bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <img
-                  className="h-12 w-12"
+                  className="h-16 w-16"
                   src="https://static1.squarespace.com/static/53cf1829e4b09d5219fc10dc/t/5b9ac78c0e2e72c60700b63a/1653522599743/"
                   alt="Workflow"
+                  onClick={() => {
+                    navigate("/")
+                  }}
                 />
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    href="#"
+                    href="/"
                     className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                   >
-                    Unit Tests
+                    Quizzes
                   </a>
 
                   <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    href="/history"
+                    className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   >
                     History
-                  </a>
-
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Settings
                   </a>
                 </div>
               </div>
@@ -101,24 +100,17 @@ function Nav() {
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a
-                  href="#"
+                  href="/"
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
-                 Unit Tests
+               Quizzes
                 </a>
 
                 <a
-                  href="#"
+                  href="/history"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   History
-                </a>
-
-                <a
-                  href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Settings
                 </a>
 
               </div>

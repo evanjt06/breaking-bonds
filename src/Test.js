@@ -112,22 +112,22 @@ export default function Sample() {
 
     <div className={"flex flex-col p-6"} style={{flex: "90%", borderLeft: "1px solid lightgrey"}}>
       {/* questions  */}
-      <div className={"flex-1"}>
+      <div className={"mb-12"}>
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 1)</label>
         <input type="text"
-               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Type answer here..." required />
       </div>
-      <div className={"flex-1"}>
+      <div className={"mb-12"}>
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 2)</label>
         <input type="text"
-               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Type answer here..." required />
       </div>
-      <div className={"flex-1"}>
+      <div className={"mb-12"}>
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 3)</label>
         <input type="text"
-               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Type answer here..." required />
       </div>
       <button
@@ -135,7 +135,8 @@ export default function Sample() {
           setOpen(true)
         }}
         type="button"
-              className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+        style={{marginTop: "auto"}}
+              className="text-white bg-neutral-900 hover:bg-neutral-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-neutral-900 dark:hover:bg-neutral-900 dark:focus:ring-gray-700 dark:border-gray-700">
         Submit responses
       </button>
     </div>

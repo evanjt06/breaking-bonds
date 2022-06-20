@@ -1,7 +1,30 @@
 import Navbar from "./Navbar";
 import React from "react";
+import {useEffect} from "react";
+import jwtDecode from "jwt-decode";
+import {useNavigate} from "react-router";
 
 export default function History() {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      return navigate("/login")
+    } else {
+      const token = localStorage.getItem("jwt")
+      try {
+        const parsed = jwtDecode(token)
+      } catch (e) {
+        // invalid token, so remove it
+        localStorage.removeItem("jwt")
+
+        return navigate("/login")
+      }
+    }
+  }, [localStorage])
+
+
   return (
     <>
 

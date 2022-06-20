@@ -1,11 +1,30 @@
 import Navbar from "./Navbar";
 import React from "react";
 import {BeakerIcon} from "@heroicons/react/solid/esm";
+import {useEffect} from "react";
 import {useNavigate} from "react-router";
+import jwtDecode from "jwt-decode"
 
 export default function Units() {
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      return navigate("/login")
+    } else {
+      const token = localStorage.getItem("jwt")
+      try {
+        const parsed = jwtDecode(token)
+      } catch (e) {
+        // invalid token, so remove it
+        localStorage.removeItem("jwt")
+
+        return navigate("/login")
+      }
+    }
+  }, [localStorage])
+
 
   return (
       <>

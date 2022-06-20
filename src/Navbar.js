@@ -37,6 +37,15 @@ function Nav() {
                   >
                     History
                   </a>
+                  <a
+                    className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    onClick={() => {
+                      localStorage.clear()
+                      navigate("/login")
+                    }}
+                  >
+                    Logout
+                  </a>
                 </div>
               </div>
             </div>

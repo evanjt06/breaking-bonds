@@ -3,6 +3,9 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import Navbar from "./Navbar";
 import {ClockIcon} from "@heroicons/react/solid/esm";
 import {Dialog, Transition} from "@headlessui/react";
+import jwtDecode from "jwt-decode";
+import {useNavigate} from "react-router";
+import {useEffect} from "react";
 // import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 // import 'react-pdf/dist/esm/Page/TextLayer.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -17,6 +20,7 @@ export default function Sample() {
   const [file, setFile] = useState('./sample.pdf');
   const [numPages, setNumPages] = useState(null);
   const [isOpen,setOpen] = useState(false)
+  const navigate = useNavigate();
 
   function onFileChange(event) {
     setFile(event.target.files[0]);
@@ -25,6 +29,23 @@ export default function Sample() {
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      return navigate("/login")
+    } else {
+      const token = localStorage.getItem("jwt")
+      try {
+        const parsed = jwtDecode(token)
+      } catch (e) {
+        // invalid token, so remove it
+        localStorage.removeItem("jwt")
+
+        return navigate("/login")
+      }
+    }
+  }, [localStorage])
+
 
   return (
 <>
@@ -92,7 +113,7 @@ export default function Sample() {
 
 
   <div className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
-      <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+      <Document file={{url: "https://uploads-ssl.webflow.com/605fe570e5454a357d1e1811/60a034b66050349be59f4a3f_SS-AP-Physics-C-Mech.pdf"}} onLoadSuccess={onDocumentLoadSuccess} options={options}>
         {Array.from(new Array(numPages), (el, index) => (
           <Page className={"w-full"} key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}

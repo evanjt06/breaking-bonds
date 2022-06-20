@@ -1,7 +1,49 @@
-import { LockClosedIcon } from '@heroicons/react/solid'
-import React from "react";
+import React, {useState} from "react";
+import axios from 'axios'
+import {useNavigate} from "react-router";
 
-export default function Login() {
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+export default function Register() {
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [msg, setMsg] = useState("")
+
+  const navigate = useNavigate()
+
+  async function register() {
+    const fd = new FormData()
+    fd.append("email", email)
+    fd.append("password", password)
+
+    try {
+      const res = await axios.post("http://localhost:8080/register", fd)
+      const data = res.data
+      if (data === "") {
+
+        const res2 = await axios.post("http://localhost:8080/login", {
+          "Email": email,
+          "Password": password
+        })
+        const data2 = res2.data.token
+        localStorage.setItem("jwt", data2)
+
+       navigate("/")
+      }
+
+    } catch (err) {
+      if (err.response.data === "email already taken") {
+        setMsg("Email already taken.")
+      }
+    }
+  }
 
   return (
     <>
@@ -26,8 +68,7 @@ export default function Login() {
             <h2 className="mt-6 text-center text-3xl font-extrabold">Sign up for AV Chemistry</h2>
 
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
+          <div className="mt-8 space-y-6">
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -41,6 +82,14 @@ export default function Login() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
+
+                  onChange={(e) => {
+                    if (validateEmail(email))
+                    {
+                      setMsg("")
+                    }
+                    setEmail(e.target.value)
+                  }}
                 />
               </div>
               <div>
@@ -50,18 +99,48 @@ export default function Login() {
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  // type="password"
                   autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
+
+                  onChange={(e) => {
+                    if (password.length >= 8) {
+                      setMsg("")
+                    }
+                    setPassword(e.target.value)
+                  }}
                 />
               </div>
+
+              {msg !== "" &&
+              <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+                <p className="font-bold">Uh oh!</p>
+                <p>{msg}</p>
+              </div>}
             </div>
 
             <div>
               <button
-                type="submit"
+                onClick={() => {
+                  if (email === "" || password === "")
+                  {
+                    setMsg("Email and password are required.")
+                    return
+                  }
+                  if (!validateEmail(email))
+                  {
+                    setMsg("Invalid email.")
+                    return
+                  }
+                  if (password.length < 8) {
+                    setMsg("Password too short.")
+                    return
+                  }
+
+                  register()
+                }}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Sign up
@@ -70,13 +149,13 @@ export default function Login() {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Already have an account? Sign in here.
                 </a>
               </div>
             </div>
 
-          </form>
+          </div>
         </div>
       </div>
     </>

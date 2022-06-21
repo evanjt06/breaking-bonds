@@ -6,8 +6,9 @@ import {Dialog, Transition} from "@headlessui/react";
 import jwtDecode from "jwt-decode";
 import {useNavigate} from "react-router";
 import {useEffect} from "react";
-// import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-// import 'react-pdf/dist/esm/Page/TextLayer.css';
+import {useLocation} from "react-router-dom";
+import axios from 'axios'
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const options = {
@@ -17,14 +18,11 @@ const options = {
 };
 
 export default function Sample() {
-  const [file, setFile] = useState('./sample.pdf');
+  const [file, setFile] = useState("");
   const [numPages, setNumPages] = useState(null);
   const [isOpen,setOpen] = useState(false)
   const navigate = useNavigate();
-
-  function onFileChange(event) {
-    setFile(event.target.files[0]);
-  }
+  const location = useLocation();
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -46,6 +44,19 @@ export default function Sample() {
     }
   }, [localStorage])
 
+  useEffect(() => {
+    axios.get("http://localhost:8080/auth/quiz/" + location.state.packet, {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      }
+    })
+      .then(res => res.data)
+      .then(json => {
+        const info = json.quiz
+
+        setFile(info.PDFLink)
+      })
+  }, [location])
 
   return (
 <>
@@ -113,7 +124,7 @@ export default function Sample() {
 
 
   <div className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
-      <Document file={{url: "https://uploads-ssl.webflow.com/605fe570e5454a357d1e1811/60a034b66050349be59f4a3f_SS-AP-Physics-C-Mech.pdf"}} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+      <Document file={{url: file}} onLoadSuccess={onDocumentLoadSuccess} options={options}>
         {Array.from(new Array(numPages), (el, index) => (
           <Page className={"w-full"} key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}

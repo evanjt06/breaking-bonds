@@ -25,7 +25,6 @@ export default function Units() {
     }
   }, [localStorage])
 
-
   return (
       <>
 
@@ -60,10 +59,10 @@ export default function Units() {
                     </div>
                     <div className={"flex flex-col flex-1"}>
                       <div className={"text-lg font-bold mb-4"}>
-                        The Global Tapestry
+                        Lorem ipsum
                       </div>
                       <div style={{color: "gray"}}>
-                        Spanning the period 200-1450, this theme covers the creation, development, and decline of states across the world. Learn how power was configured and consolidated across the world, from the imperial bureaucracy of the Chinese dynasties to the intellectual innovations of the Muslim world to the diverse city-states of the Americas.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                       </div>
                     </div>
                   </div>
@@ -71,24 +70,24 @@ export default function Units() {
               <div className={"flex flex-col"}>
                 <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}
                 onClick={() => {
-                  navigate("/test")
+                  navigate("/test", {state: {packet: 1}})
                 }}
                 >
-                  <span className={"font-bold mr"}>  2.1 | The Silk Roads
+                  <span className={"font-bold mr"}> 1 | Excepteur sint
                     <span
                     className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
                   </span>
                   <span className={"font-bold"}>  Not started  </span>
                 </div>
                 <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
+                  <span className={"font-bold"}>  1 | Excepteur sint
                   <span
                     className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
                   </span>
                   <span className={"font-bold"}>  Not started  </span>
                 </div>
                 <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
+                  <span className={"font-bold"}>  1 | Excepteur sint
                   <span
                     className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
 
@@ -97,140 +96,6 @@ export default function Units() {
                 </div>
               </div>
             </div>
-
-          <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
-
-            <div className={"flex p-10"}>
-              <div className="flex -space-x-1 overflow-hidden mr-10">
-                <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
-                     src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
-                     alt="" />
-              </div>
-              <div className={"flex flex-col flex-1"}>
-                <div className={"text-lg font-bold mb-4"}>
-                  The Global Tapestry
-                </div>
-                <div style={{color: "gray"}}>
-                  Spanning the period 200-1450, this theme covers the creation, development, and decline of states across the world. Learn how power was configured and consolidated across the world, from the imperial bureaucracy of the Chinese dynasties to the intellectual innovations of the Muslim world to the diverse city-states of the Americas.
-                </div>
-              </div>
-            </div>
-
-            <div className={"flex flex-col"}>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold mr"}>  2.1 | The Silk Roads
-                    <span
-                      className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
-
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-            </div>
-          </div>
-
-
-          <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
-
-            <div className={"flex p-10"}>
-              <div className="flex -space-x-1 overflow-hidden mr-10">
-                <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
-                     src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
-                     alt="" />
-              </div>
-              <div className={"flex flex-col flex-1"}>
-                <div className={"text-lg font-bold mb-4"}>
-                  The Global Tapestry
-                </div>
-                <div style={{color: "gray"}}>
-                  Spanning the period 200-1450, this theme covers the creation, development, and decline of states across the world. Learn how power was configured and consolidated across the world, from the imperial bureaucracy of the Chinese dynasties to the intellectual innovations of the Muslim world to the diverse city-states of the Americas.
-                </div>
-              </div>
-            </div>
-
-            <div className={"flex flex-col"}>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold mr"}>  2.1 | The Silk Roads
-                    <span
-                      className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
-
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-            </div>
-          </div>
-
-
-          <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
-
-            <div className={"flex p-10"}>
-              <div className="flex -space-x-1 overflow-hidden mr-10">
-                <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
-                     src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
-                     alt="" />
-              </div>
-              <div className={"flex flex-col flex-1"}>
-                <div className={"text-lg font-bold mb-4"}>
-                  The Global Tapestry
-                </div>
-                <div style={{color: "gray"}}>
-                  Spanning the period 200-1450, this theme covers the creation, development, and decline of states across the world. Learn how power was configured and consolidated across the world, from the imperial bureaucracy of the Chinese dynasties to the intellectual innovations of the Muslim world to the diverse city-states of the Americas.
-                </div>
-              </div>
-            </div>
-
-            <div className={"flex flex-col"}>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold mr"}>  2.1 | The Silk Roads
-                    <span
-                      className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-              <div className={"w-full flex justify-between rounded-lg  p-6 hover:cursor-pointer hover:bg-slate-100"} style={{borderTop: "1px solid lightgrey"}}>
-                  <span className={"font-bold"}>  2.1 | The Silk Roads
-                  <span
-                    className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
-
-                  </span>
-                <span className={"font-bold"}>  Not started  </span>
-              </div>
-            </div>
-          </div>
 
 
         </div>

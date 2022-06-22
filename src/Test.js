@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, {useState, Fragment, useRef, useMemo, useCallback} from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import Navbar from "./Navbar";
 import {ClockIcon} from "@heroicons/react/solid/esm";
@@ -23,6 +23,18 @@ export default function Sample() {
   const [isOpen,setOpen] = useState(false)
   const navigate = useNavigate();
   const location = useLocation();
+
+  const response1Ref = useRef()
+  const response2Ref = useRef()
+  const response3Ref = useRef()
+
+  const [userResponse1, setUserResponse1] = useState(false)
+  const [userResponse2, setUserResponse2] = useState(false)
+  const [userResponse3, setUserResponse3] = useState(false)
+
+  const [elapsedTime, setElapsedTime] = useState("")
+
+  const [percent, setPercent] = useState("")
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
@@ -56,7 +68,34 @@ export default function Sample() {
 
         setFile(info.PDFLink)
       })
-  }, [location])
+  }, [])
+
+  async function submitResponses(number) {
+
+    const fd = new FormData();
+    fd.append("Response1", response1Ref.current.value)
+    fd.append("Response2", response2Ref.current.value)
+    fd.append("Response3", response3Ref.current.value)
+    fd.append("ElapsedTime", "2006-01-02 15:04:05")
+
+    const response = await axios.post("http://localhost:8080/auth/submitQuiz/" + location.state.packet, fd, {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      }
+    })
+    const data = await response.data
+    const {percentage, response1, response2, response3} = data
+
+    setPercent(percentage)
+
+    setUserResponse1(response1)
+    setUserResponse2(response2)
+    setUserResponse3(response3)
+
+    setOpen(true)
+
+
+  }
 
   return (
 <>
@@ -90,14 +129,19 @@ export default function Sample() {
             <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
               <Dialog.Title
                 as="h3"
-                className="text-lg font-medium leading-6 text-gray-900"
+                className="text-xl font-medium leading-6 text-gray-900"
               >
-                You got <b>66%</b>
+                You got <b>{percent}%</b>
               </Dialog.Title>
               <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                  Your payment has been successfully submitted. We’ve sent
-                  you an email with all of the details of your order.
+                <p className="text-lg text-gray-500 m-5">
+                  Question 1) <span style={{backgroundColor: userResponse1 ? "lightgreen" : "#f94336", padding: 10, borderRadius: 10}}>{response1Ref?.current?.value} {userResponse1 ? " (Correct)" : " (Incorrect)"}</span>
+                </p>
+                <p className="text-lg text-gray-500 m-5">
+                  Question 2) <span style={{backgroundColor: userResponse2 ? "lightgreen" : "#f94336", padding: 10, borderRadius: 10}}>{response2Ref?.current?.value} {userResponse2 ? " (Correct)" : " (Incorrect)"}</span>
+                </p>
+                <p className="text-lg text-gray-500 m-5">
+                  Question 3) <span style={{backgroundColor: userResponse3 ? "lightgreen" : "#f94336", padding: 10, borderRadius: 10}}>{response3Ref?.current?.value} {userResponse3 ? " (Correct)" : " (Incorrect)"}</span>
                 </p>
               </div>
 
@@ -107,6 +151,7 @@ export default function Sample() {
                   className="float-right inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   onClick={() => {
                     setOpen(false)
+                    window.location.href = "/"
                   }}
                 >
                   Got it, thanks!
@@ -124,7 +169,11 @@ export default function Sample() {
 
 
   <div className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
-      <Document file={{url: file}} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+      <Document
+        file={{url: file}}
+        onLoadSuccess={onDocumentLoadSuccess}
+        options={options}
+      >
         {Array.from(new Array(numPages), (el, index) => (
           <Page className={"w-full"} key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}
@@ -148,23 +197,39 @@ export default function Sample() {
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 1)</label>
         <input type="text"
                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="Type answer here..." required />
+               placeholder="Type answer here..." required
+               ref={response1Ref}
+               onChange={(e) => {
+                 response1Ref.current.value = e.target.value
+               }}
+        />
       </div>
       <div className={"mb-12"}>
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 2)</label>
         <input type="text"
                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="Type answer here..." required />
+               placeholder="Type answer here..." required
+               ref={response2Ref}
+               onChange={(e) => {
+                 response2Ref.current.value = e.target.value
+               }}
+        />
       </div>
       <div className={"mb-12"}>
         <label htmlFor="email" className="block mb-2 text-base font-medium">Question 3)</label>
         <input type="text"
                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="Type answer here..." required />
+               placeholder="Type answer here..." required
+               ref={response3Ref}
+               onChange={(e) => {
+                 response3Ref.current.value = e.target.value
+               }}
+        />
       </div>
       <button
         onClick={() => {
-          setOpen(true)
+
+          submitResponses()
         }}
         type="button"
         style={{marginTop: "auto"}}

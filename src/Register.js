@@ -65,7 +65,7 @@ export default function Register() {
               src="https://static1.squarespace.com/static/53cf1829e4b09d5219fc10dc/t/5b9ac78c0e2e72c60700b63a/1653522599743/"
               alt="Workflow"
             />
-            <h2 className="mt-6 text-center text-3xl font-extrabold">Sign up for AV Chemistry</h2>
+            <h2 className="mt-6 text-center text-3xl font-extrabold">Sign up for Breaking Bonds</h2>
 
           </div>
           <div className="mt-8 space-y-6">

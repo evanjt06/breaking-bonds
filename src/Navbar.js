@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import {useNavigate} from "react-router";
-
+import axios from "axios"
 
 function Nav() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [points, setPoints] = useState("")
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/auth/points", {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("jwt")
+      }
+    })
+      .then(v => v.data)
+      .then(data => {
+        console.log(data)
+        setPoints(data.points)
+      })
+  }, [])
+
   return (
     <div>
       <nav className="bg-gray-800">
@@ -30,13 +45,6 @@ function Nav() {
                   >
                     Quizzes
                   </a>
-
-                  <a
-                    href="/history"
-                    className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    History
-                  </a>
                   <a
                     className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                     onClick={() => {
@@ -48,6 +56,9 @@ function Nav() {
                   </a>
                 </div>
               </div>
+            </div>
+            <div className={"text-white block px-3 py-2 rounded-md text-base font-medium"}>
+              Total Points: {points}
             </div>
             <div className="-mr-2 flex md:hidden">
               <button

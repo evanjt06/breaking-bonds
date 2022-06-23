@@ -28,11 +28,11 @@ export default function Sample() {
   const response2Ref = useRef()
   const response3Ref = useRef()
 
+  const [isTimeUp, setIsTimeUp] = useState(false)
+
   const [userResponse1, setUserResponse1] = useState(false)
   const [userResponse2, setUserResponse2] = useState(false)
   const [userResponse3, setUserResponse3] = useState(false)
-
-  const [elapsedTime, setElapsedTime] = useState("")
 
   const [percent, setPercent] = useState("")
 
@@ -67,6 +67,33 @@ export default function Sample() {
         const info = json.quiz
 
         setFile(info.PDFLink)
+
+        const x = new Date(info.Timer).toISOString().slice(14,19).split(":")
+        const xx = parseInt(x[0])
+        const xxx = parseInt(x[1])
+
+        let myTimer;
+        function clock() {
+          myTimer = setInterval(myClock, 1000);
+          let c = xx * 60 + xxx; //Initially set to 1 hour
+
+
+          function myClock() {
+            --c
+            let seconds = c % 60; // Seconds that cannot be written in minutes
+            let minutes = (c - seconds) / 60; // Gives the seconds that COULD be given in minutes
+
+            document.getElementById("timer").innerHTML = ((minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds))
+            if (c === 0) {
+              clearInterval(myTimer);
+
+              setIsTimeUp(true)
+            }
+          }
+        }
+
+        clock();
+
       })
   }, [])
 
@@ -165,30 +192,30 @@ export default function Sample() {
   </Transition>
 
   <Navbar />
-<div className={"flex"}>
+<div id={"test-box-container"} className={"flex"}>
 
 
-  <div className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
+  <div id={"test-box-pdf"} className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
       <Document
         file={{url: file}}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
       >
         {Array.from(new Array(numPages), (el, index) => (
-          <Page className={"w-full"} key={`page_${index + 1}`} pageNumber={index + 1} />
+          <Page key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}
       </Document>
     </div>
 
-  <div className={"flex flex-col"} style={{flex: "25%", borderLeft: "1px solid lightgrey", height: "93vh"}}>
+  <div id={"test-box"} className={"flex flex-col"} style={{flex: "25%", borderLeft: "1px solid lightgrey", height: "93vh"}}>
 
     {/*  sidebar questions */}
 
-    <div className={"flex"} style={{flex: "10%", borderLeft: "1px solid lightgrey"}}>
+    <div className={"flex flex-col"} style={{flex: "10%", borderLeft: "1px solid lightgrey"}}>
       {/*  timer */}
 
-      <h1 className={"m-auto mt-6"}><ClockIcon style={{margin: "auto"}} height={60} /> Timer: <b>24h 10m 5s</b></h1>
-
+      <h1 className={"m-auto mt-6"}><ClockIcon style={{margin: "auto"}} height={60} /> Timer: <b id={"timer"}></b> </h1>
+      {isTimeUp === true && <h1 className={"m-auto bg-red-300 p-2 mt-2 rounded-xl"}>TIME IS UP!</h1>}
     </div>
 
     <div className={"flex flex-col p-6"} style={{flex: "90%", borderLeft: "1px solid lightgrey"}}>

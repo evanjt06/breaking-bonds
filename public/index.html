@@ -45,6 +45,46 @@
       height: auto !important;
       width: auto !important;
     }
+
+    @media only screen and (max-width: 1500px) {
+      #banner {
+        display: none;
+      }
+      #banner-ext {
+        margin-top: 50px;
+      }
+    }
+
+    @media only screen and (max-width: 800px) {
+      #banner-ext {
+        margin-top: 0px;
+      }
+    }
+
+
+    @media only screen and (max-width: 1400px) {
+      .react-pdf__Page__canvas {
+        height: 80vh !important;
+      }
+    }
+    @media only screen and (max-width: 900px) {
+      .react-pdf__Page__canvas {
+        height: 70vh !important;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      #test-box {
+        flex: 100%;
+      }
+      #test-box-container {
+        flex-direction: column !important;
+      }
+      .react-pdf__Page__canvas {
+        height: 60vh !important;
+      }
+    }
+
   </style>
   </body>
 </html>

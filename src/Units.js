@@ -85,7 +85,7 @@ export default function Units() {
         <Navbar />
         {/*copy albert io style*/}
 
-        <div className={"text-center"}>
+        <div className={"text-center"} id={"banner"}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path fill="#273036" fill-opacity="1" d="M0,192L80,208C160,224,320,256,480,245.3C640,235,800,181,960,170.7C1120,160,1280,192,1360,208L1440,224L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
         </svg>
@@ -101,7 +101,7 @@ export default function Units() {
           </div>
         </div>
 
-        <div className={"flex flex-col w-7/12 m-auto h-screen"}>
+        <div id={"banner-ext"} className={"flex flex-col w-full md:w-7/12 m-auto h-screen"}>
 
             <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 

@@ -9,7 +9,7 @@ function Nav() {
   const [points, setPoints] = useState("")
 
   useEffect(() => {
-    axios.get("http://localhost:8080/auth/points", {
+    axios.get("/auth/points", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       }
@@ -125,6 +125,15 @@ function Nav() {
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                Quizzes
+                </a>
+                <a
+                  className="text-white hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => {
+                    localStorage.clear()
+                    navigate("/login")
+                  }}
+                >
+                  Logout
                 </a>
 
               </div>

@@ -61,7 +61,7 @@ export default function Units() {
   }, [localStorage])
 
   useEffect(() => {
-    axios.get("http://localhost:8080/auth/scores", {
+    axios.get("/auth/scores", {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       }
@@ -105,7 +105,7 @@ export default function Units() {
 
             <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
-                  <div className={"flex p-10"}>
+                  <div className={"flex md:p-10 p-4"}>
                     <div className="flex -space-x-1 overflow-hidden mr-10">
                       <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
                            src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
@@ -166,7 +166,7 @@ export default function Units() {
 
           <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
-            <div className={"flex p-10"}>
+            <div className={"flex md:p-10 p-4"}>
               <div className="flex -space-x-1 overflow-hidden mr-10">
                 <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
                      src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
@@ -226,7 +226,7 @@ export default function Units() {
 
           <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
-            <div className={"flex p-10"}>
+            <div className={"flex md:p-10 p-4"}>
               <div className="flex -space-x-1 overflow-hidden mr-10">
                 <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
                      src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
@@ -286,7 +286,7 @@ export default function Units() {
 
           <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
-            <div className={"flex p-10"}>
+            <div className={"flex md:p-10 p-4"}>
               <div className="flex -space-x-1 overflow-hidden mr-10">
                 <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
                      src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"
@@ -346,7 +346,7 @@ export default function Units() {
 
           <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
-            <div className={"flex p-10"}>
+            <div className={"flex md:p-10 p-4"}>
               <div className="flex -space-x-1 overflow-hidden mr-10">
                 <img className="inline-block h-24 w-24 rounded-full ring-2 ring-white"
                      src="https://collegeboard.clickhelp.co/resources/Storage/pre-ap-coordinator-manual-2021-22/Pre-AP%20Chemistry.png"

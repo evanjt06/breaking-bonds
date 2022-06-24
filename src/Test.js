@@ -57,7 +57,7 @@ export default function Sample() {
   }, [localStorage])
 
   useEffect(() => {
-    axios.get("http://localhost:8080/auth/quiz/" + location.state.packet, {
+    axios.get("/auth/quiz/" + location.state.packet, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       }
@@ -105,7 +105,7 @@ export default function Sample() {
     fd.append("Response3", response3Ref.current.value)
     fd.append("ElapsedTime", "2006-01-02 15:04:05")
 
-    const response = await axios.post("http://localhost:8080/auth/submitQuiz/" + location.state.packet, fd, {
+    const response = await axios.post("/auth/submitQuiz/" + location.state.packet, fd, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
       }

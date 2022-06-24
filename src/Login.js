@@ -24,7 +24,7 @@ export default function Login() {
     fd.append("password", password)
 
     try {
-      const res2 = await axios.post("http://localhost:8080/login", {
+      const res2 = await axios.post("/login", {
         "Email": email,
         "Password": password
       })
@@ -34,9 +34,9 @@ export default function Login() {
       navigate("/")
 
     } catch (err) {
-      if (err.response.data === "email already taken") {
-        setMsg("Email already taken.")
-      }
+
+        setMsg("Invalid login credentials.")
+
     }
   }
 
@@ -94,7 +94,7 @@ export default function Login() {
                 <input
                   id="password"
                   name="password"
-                  // type="password"
+                  type="password"
                   autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"

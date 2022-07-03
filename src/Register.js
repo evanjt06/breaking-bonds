@@ -39,6 +39,7 @@ export default function Register() {
       }
 
     } catch (err) {
+      console.log(err)
       if (err.response.data === "email already taken") {
         setMsg("Email already taken.")
       }

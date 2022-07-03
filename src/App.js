@@ -8,6 +8,10 @@ import Register from "./Register";
 
 export default function App() {
 
+  if (window.location.href === "http://breakingbonds.surge.sh/login" || window.location.href === "http://breakingbonds.surge.sh/register") {
+    window.location.href = "https://breakingbonds.surge.sh/login"
+  }
+
   return (
     <>
       <Routes>

@@ -8,6 +8,7 @@ import {useNavigate} from "react-router";
 import {useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import axios from 'axios'
+import Spinner from "react-svg-spinner";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -181,7 +182,7 @@ export default function Sample() {
                     window.location.href = "/"
                   }}
                 >
-                  Got it, thanks!
+                  Ok
                 </button>
               </div>
             </Dialog.Panel>
@@ -200,6 +201,7 @@ export default function Sample() {
         file={{url: file}}
         onLoadSuccess={onDocumentLoadSuccess}
         options={options}
+        loading={<Spinner size={90} thickness={3} gap={0.5} />}
       >
         {Array.from(new Array(numPages), (el, index) => (
           <Page key={`page_${index + 1}`} pageNumber={index + 1} />

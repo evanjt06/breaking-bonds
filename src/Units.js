@@ -101,7 +101,7 @@ export default function Units() {
           </div>
         </div>
 
-        <div id={"banner-ext"} className={"flex flex-col w-full md:w-7/12 m-auto h-screen"}>
+        <div id={"banner-ext"} className={"flex flex-col w-full md:w-7/12 m-auto"}>
 
             <div className={"w-full flex flex-col rounded-lg mb-20"} style={{border: "1px solid lightgrey"}}>
 
@@ -188,7 +188,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 4}})
                    }}
               >
-                  <span className={"font-bold mr"}> 1 | Excepteur sint
+                  <span className={"font-bold mr"}> 2 | Excepteur sint
                     <span
                       className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
                   </span>
@@ -199,7 +199,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 5}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  2 | Excepteur sint
                   <span
                     className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
                   </span>
@@ -210,7 +210,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 6}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  2 | Excepteur sint
                   <span
                     className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
 
@@ -248,7 +248,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 7}})
                    }}
               >
-                  <span className={"font-bold mr"}> 1 | Excepteur sint
+                  <span className={"font-bold mr"}> 3 | Excepteur sint
                     <span
                       className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
                   </span>
@@ -259,7 +259,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 8}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  3 | Excepteur sint
                   <span
                     className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
                   </span>
@@ -270,7 +270,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 9}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  3 | Excepteur sint
                   <span
                     className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
 
@@ -308,7 +308,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 10}})
                    }}
               >
-                  <span className={"font-bold mr"}> 1 | Excepteur sint
+                  <span className={"font-bold mr"}> 4 | Excepteur sint
                     <span
                       className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
                   </span>
@@ -319,7 +319,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 11}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  4 | Excepteur sint
                   <span
                     className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
                   </span>
@@ -330,7 +330,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 12}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  4 | Excepteur sint
                   <span
                     className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
 
@@ -368,7 +368,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 13}})
                    }}
               >
-                  <span className={"font-bold mr"}> 1 | Excepteur sint
+                  <span className={"font-bold mr"}> 5 | Excepteur sint
                     <span
                       className="bg-green-100 text-green-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Easy</span>
                   </span>
@@ -379,7 +379,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 14}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  5 | Excepteur sint
                   <span
                     className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 ml-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">Medium</span>
                   </span>
@@ -390,7 +390,7 @@ export default function Units() {
                      navigate("/test", {state: {packet: 15}})
                    }}
               >
-                  <span className={"font-bold"}>  1 | Excepteur sint
+                  <span className={"font-bold"}>  5 | Excepteur sint
                   <span
                     className="bg-red-100 text-red-800 text-xs font-semibold mr-2  ml-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Difficult</span>
 

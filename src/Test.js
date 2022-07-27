@@ -58,6 +58,9 @@ export default function Sample() {
   }, [localStorage])
 
   useEffect(() => {
+
+    let myTimer;
+
     axios.get("/auth/quiz/" + location.state.packet, {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -73,7 +76,6 @@ export default function Sample() {
         const xx = parseInt(x[0])
         const xxx = parseInt(x[1])
 
-        let myTimer;
         function clock() {
           myTimer = setInterval(myClock, 1000);
           let c = xx * 60 + xxx; //Initially set to 1 hour
@@ -96,6 +98,10 @@ export default function Sample() {
         clock();
 
       })
+
+    return () => {
+      clearInterval(myTimer);
+    }
   }, [])
 
   async function submitResponses(number) {
@@ -193,21 +199,21 @@ export default function Sample() {
   </Transition>
 
   <Navbar />
-<div id={"test-box-container"} className={"flex"}>
+    <div id={"test-box-container"} className={"flex"}>
 
 
-  <div id={"test-box-pdf"} className={"flex flex-col items-center"} style={{flex: "75%", height: "90vh", overflow: "scroll"}}>
-      <Document
-        file={{url: file}}
-        onLoadSuccess={onDocumentLoadSuccess}
-        options={options}
-        loading={<Spinner size={90} thickness={3} gap={0.5} />}
-      >
-        {Array.from(new Array(numPages), (el, index) => (
-          <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-        ))}
-      </Document>
-    </div>
+        <div id={"test-box-pdf"} className={"flex flex-col items-center"}>
+            <Document
+              file={{url: file}}
+              onLoadSuccess={onDocumentLoadSuccess}
+              options={options}
+              loading={<Spinner size={90} thickness={3} gap={0.5} />}
+            >
+              {Array.from(new Array(numPages), (el, index) => (
+                <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+              ))}
+            </Document>
+          </div>
 
   <div id={"test-box"} className={"flex flex-col"} style={{flex: "25%", borderLeft: "1px solid lightgrey", height: "93vh"}}>
 
@@ -261,8 +267,7 @@ export default function Sample() {
           submitResponses()
         }}
         type="button"
-        style={{marginTop: "auto"}}
-              className="text-white bg-neutral-900 hover:bg-neutral-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-neutral-900 dark:hover:bg-neutral-900 dark:focus:ring-gray-700 dark:border-gray-700">
+        className="text-white bg-neutral-900 hover:bg-neutral-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-neutral-900 dark:hover:bg-neutral-900 dark:focus:ring-gray-700 dark:border-gray-700">
         Submit responses
       </button>
     </div>
